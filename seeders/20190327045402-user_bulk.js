@@ -1,5 +1,7 @@
 'use strict';
 
+const seed = require('../faker')
+console.log(seed)
 module.exports = {
   up: (queryInterface, Sequelize) => {
     /*
@@ -12,6 +14,9 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
+  
+
+     return queryInterface.bulkInsert('Users', seed, {});
   },
 
   down: (queryInterface, Sequelize) => {
@@ -22,5 +27,6 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('People', null, {});
     */
+   return queryInterface.bulkDelete('Users', null, {});
   }
 };
