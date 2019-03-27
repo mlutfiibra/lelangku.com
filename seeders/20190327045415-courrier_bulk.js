@@ -12,18 +12,24 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    return queryInterface.bulkInsert('Courrier', [{
+    return queryInterface.bulkInsert('Courriers', [{
       name: 'JNE',
       price: 3000,
-      img_path: null
+      img_path: null,
+      createdAt: new Date,
+      updatedAt: new Date
     },{
       name: 'Tiki',
       price: 2500,
-      img_path: null
+      img_path: null,
+      createdAt: new Date,
+      updatedAt: new Date
     },{
       name: 'GoJek',
       price: 5000,
-      img_path: null
+      img_path: null,
+      createdAt: new Date,
+      updatedAt: new Date
     }], {});
   },
 
@@ -35,6 +41,6 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('People', null, {});
     */
-    return queryInterface.bulkDelete('Courrier', null, {});
+    return queryInterface.bulkDelete('Courriers', null, {});
   }
 };

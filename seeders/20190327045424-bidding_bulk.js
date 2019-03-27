@@ -12,18 +12,24 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    return queryInterface.bulkInsert('Bidding', [{
+    return queryInterface.bulkInsert('Biddings', [{
       user_id: 1,
       item_id: 3,
-      current_price: 13000000
+      current_price: 13000000,
+      createdAt: new Date,
+      updatedAt: new Date
     },{
       user_id: 2,
       item_id: 3,
-      current_price: 15000000
+      current_price: 15000000,
+      createdAt: new Date,
+      updatedAt: new Date
     },{
       user_id: 3,
       item_id: 3,
-      current_price: 18000000
+      current_price: 18000000,
+      createdAt: new Date,
+      updatedAt: new Date
     }], {});
   },
 
@@ -35,6 +41,6 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('People', null, {});
     */
-    return queryInterface.bulkDelete('Bidding', null, {});
+    return queryInterface.bulkDelete('Biddings', null, {});
   }
 };

@@ -9,25 +9,25 @@ module.exports = {
       Example:*/
       return queryInterface.bulkInsert('Banks', [{
         name: 'BNI',
-        token: 021,
+        token: 21443,
         img_path : null,
         createdAt: new Date(),
         updatedAt : new Date()
       },{
         name: 'Mandiri',
-        token: 022,
+        token: 22121,
         img_path : null,
         createdAt: new Date(),
         updatedAt : new Date()
       },{
         name: 'BRI',
-        token: 023,
+        token: 23221,
         img_path : null,
         createdAt: new Date(),
         updatedAt : new Date()
       },{
         name: 'CIMB Niaga',
-        token: 024,
+        token: 24334,
         img_path : null,
         createdAt: new Date(),
         updatedAt : new Date()

@@ -15,7 +15,7 @@ for (let i = 0; i < 15; i++){
         name : randomName,
         username : randomName.toString().slice(0,4).toLowerCase(),
         password : randomName.toString().slice(0,4).toLowerCase(),
-        ig_path  : null,
+        img_path  : null,
         location : loc[Math.round(Math.random()*7)],
         address  : randomCard.address.streetC,
         balance  : Math.round(Math.random()*1000000000),
@@ -32,7 +32,7 @@ var obj2 =
         name : 'Admin',
         username : 'admin',
         password : 'admin',
-        ig_path  : null,
+        img_path  : null,
         location : 'Jakarta',
         address  : "Jalan Anggrek no 12",
         balance  : 0,
@@ -43,5 +43,5 @@ var obj2 =
     }
 
     result.push(obj2)
-console.log(result)
-module.exports = {result}
+
+module.exports = result

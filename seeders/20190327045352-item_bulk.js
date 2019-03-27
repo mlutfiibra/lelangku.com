@@ -91,8 +91,8 @@ module.exports = {
   
       },
       {
-        name: 'Rumah Mewah',
-        price: 1000000000,
+        name: 'Power Bank',
+        price: 300000,
         img_path: null,
         location: 'Depok',
         timeRemain: 86400,
@@ -102,7 +102,7 @@ module.exports = {
       },
       {
         name: 'Rumah Sangat Mewah',
-        price: 3000000000,
+        price: 1000000000,
         img_path: null,
         location: 'Jakarta',
         timeRemain: 86400,
@@ -111,8 +111,8 @@ module.exports = {
   
       },
       {
-        name: 'Pesawat Pribadi',
-        price: 30000000000,
+        name: 'Guci Kuno',
+        price: 3000000,
         img_path: null,
         location: 'Jakarta',
         timeRemain: 86400,
