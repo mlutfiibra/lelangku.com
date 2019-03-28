@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>email</th>
+                <th>img_path</th>
+                <th>location</th>
+                <th>address</th>
+                <th>balance</th>
+                <th>role</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% users.forEach(el=>{ %>
+            <tr>
+                <td>
+                    <img src="<%=el.img_path%>" alt="" style="width: 2em">
+                    <%=el.name %>
+                </td>
+                <td><%=el.email %></td>
+                <td><%=el.img_path %></td>
+                <td><%=el.location %></td>
+                <td><%=el.address %></td>
+                <td><%=el.balance %></td>
+                <td><%=el.role %></td>
+            </tr>
+            <% })%>
+        </tbody>
+    </table>
+</body>
+</html>
