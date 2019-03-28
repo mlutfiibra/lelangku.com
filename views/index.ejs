@@ -1,0 +1,48 @@
+<%- include('./partials/head', {title: 'Landing Page'}) %>
+<%- include('./partials/navbar') %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Selamat datang di Lelangku</h1>
+        </div>
+        <div class="col-md-12">
+            <h1>List Items Live</h1><br>
+            <div>
+                <% if(success){%>
+                <h4>your data has been <%=success%>ed!</h4>
+                <%}%>
+        <%if(err){%>
+                <h4><%= err %></h4>
+                <% } %>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Name :</td>
+                        <td>Price :</td>
+                        <td>Image</td>
+                        <td>Location :</td>
+                        <td>Time:</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% data.forEach(function(member){ %>
+                    <tr>
+                        <td><%= member.name %></td>
+                        <td><%= member.price %></td>
+                        <td><img src=<%= member.img_path %>></td>
+                        <td><%= member.location %></td>
+                        <td><%= Math.round((86400000-(new Date()-member.createdAt))/3600000)%> hour(s) remaining</td>
+                        <td>
+                            <a href="/bid">Bid!</a>
+                        </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<%- include('./partials/footer') %>

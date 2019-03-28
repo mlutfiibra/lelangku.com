@@ -8,6 +8,8 @@ const multer  = require('multer')
 const upload = multer({ dest: 'public/img' })
 const items = require('./routes/items')
 const users = require('./routes/users')
+const admin = require('./routes/admin')
+const biddings = require('./routes/biddings')
 
 app.use(express.static('public'))
 app.use(bodyParser.json());
@@ -16,7 +18,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs')
 
 app.use('/users', upload.single('img_path'), users)
+app.use('/admin', admin)
 app.use('/items', items)
+app.use('/biddings', biddings)
 app.use('/', routes)
 
 app.listen(PORT, ()=> console.log(`Listening to ${new Date} radio ${PORT} F.M`))

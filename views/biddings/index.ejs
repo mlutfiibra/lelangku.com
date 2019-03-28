@@ -1,0 +1,30 @@
+<%- include('../partials/head', {title: 'Dashboar Admin'}) %>
+<%- include('../partials/navbar') %>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>Name :</td>
+            <td>Price :</td>
+            <td>Image</td>
+            <td>Location :</td>
+            <td>Auction Time Remaining :</td>
+            <td>Options</td>
+        </tr>
+    </thead>
+    <tbody>
+        <% data.forEach(function(member){ %>
+        <tr>
+            <td><%= member.name %></td>
+            <td><%= member.price %></td>
+            <td><img src=<%= member.img_path %>></td>
+            <td><%= member.location %></td>
+            <td><%= Math.round((86400000-(new Date()-member.createdAt))/3600000)%> hour(s) remaining</td>
+            <td><a href='/items/edit/<%= member.id %>'>Edit</a> || <a href='/items/Delete/<%= member.id %>'>Delete</a>
+            </td>
+        </tr>
+        <% }) %>
+    </tbody>
+</table>
+
+<%- include('../partials/footer') %>

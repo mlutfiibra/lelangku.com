@@ -7,13 +7,13 @@ const Model = require('../models')
 router.get('/',(req,res)=>{
     Model.Item.findAll({order : [['createdAt','ASC']]}).then((data)=>{
         let success = req.query.success
-        res.render('list_items',{data:data,success:success,err:null})
+        res.render('items/list_items',{data:data,success:success,err:null})
     })
     .catch((err)=>{res.render('list_items',{err:err.message})})
 })
 
 router.get('/add',(req,res)=>{
-    res.render('add_items',{err:null})
+    res.render('items/add_items',{err:null})
 })
 
 router.post('/add',(req,res)=>{
@@ -37,7 +37,7 @@ router.post('/add',(req,res)=>{
 router.get('/edit/:id', (req,res)=>{
     let id = req.params.id
     Model.Item.findByPk(id).then((data) => {
-        res.render('edit_items',{data:data,err:null})
+        res.render('items/edit_items',{data:data,err:null})
     })
 })
 
@@ -52,7 +52,7 @@ router.post('/edit/:id',(req,res)=>{
         .then(() => {
             res.redirect('/items/?success=edit')    
         })
-        .catch(function(err){res.render('edit_items',{err:err.message})})//perbaiki
+        .catch(function(err){res.render('items/edit_items',{err:err.message})})//perbaiki
     })
 })
 
@@ -63,7 +63,7 @@ router.get('/delete/:id',(req,res)=>{
             res.redirect('/items/?success=delet')
         })
     })
-    .catch(function(err){res.render('list_items',{err:err.message})})//perbaiki
+    .catch(function(err){res.render('items/list_items',{err:err.message})})//perbaiki
 })
 
 module.exports = router

@@ -36,6 +36,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   User.associate = function(models) {
     // associations can be defined here
+    User.hasMany(models.Bidding, {foreignKey: 'user_id'})
   };
 
   User.generateSaltAndPassword = function(user) {

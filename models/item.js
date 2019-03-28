@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     timeRemain: DataTypes.INTEGER
   }, {});
   Item.associate = function(models) {
-    // associations can be defined here
+    Item.hasMany(models.Bidding, {foreignKey: 'item_id'})
   };
   return Item;
 };
