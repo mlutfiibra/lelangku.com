@@ -7,7 +7,7 @@ var upload = multer({ dest: './public/upload/' })
 
 //CREATE
 router.get('/',(req,res)=>{
-    Model.Item.findAll({order : [['id','ASC']]}).then((data)=>{
+    Model.Item.findAll({order : [['createdAt','DESC']]}).then((data)=>{
         let success = req.query.success
         res.render('items/list_items',{data:data,success:success,err:null})
     })

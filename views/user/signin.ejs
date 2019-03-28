@@ -1,17 +1,24 @@
 <%- include('../partials/head', {title: 'Landing Page'}) %>
 <%- include('../partials/navbar') %>
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h1>Sign In</h1>
-        </div>
-        <div class="col-md-12">
-            <form action="/users/signin" method="post">
-                <input type="email" name="email" placeholder="Input your email">
-                <input type="password" name="password" placeholder="Input your password">
-    
-                <button type="submit">Sign In</button>
-            </form>
+    <div class="container-form text-center">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Sign In</h1>
+            </div>
+            <div class="col-md-12">
+                <form action="/auth/signin" method="post">
+                    <div>
+                        <input type="email" name="email" class="form-group" placeholder="Input your email">
+                    </div>
+                    <div>
+                        <input type="password" name="password" class="form-group" placeholder="Input your password">
+                    </div>
+                    <div>
+                        <button type="submit">Sign In</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

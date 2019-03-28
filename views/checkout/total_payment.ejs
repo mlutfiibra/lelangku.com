@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/public/leaflet/leaflet.css"
+    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+    crossorigin=""/>
+    <script src="/public/leaflet/leaflet.js"
+    integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+    crossorigin=""></script>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+</head>
+<body>
+    <h2>Congratulation! You have won the auction!</h2>
+    <h3><%=  %></h3>
+    <img src="">
+    <h3>Please choose your location using the blue pointer in the map</h3>
+    <div id="mapid"></div><br>
+    <button onclick="getPosition()">choose your location</button>
+    <style>
+        #mapid { height: 700px; width: 700px}
+        </style>
+    <form method="POST">
+        <h3>Please choose courriers and payment method</h3>
+        <label>Choose courrier agent:</label>
+        <select id='courrier' name='courrier'>
+            <%courriers.forEach(courriers =>{%>
+                <option value="<%=courriers.price%>"><%=courriers.name%></option>
+            <%})%>
+        </select>
+        <label for bank>Choose bank:</label>
+        <select id='bank' name='bank'>
+        <%banks.forEach(banks =>{%>
+            <option value="<%=banks.token%>"><%=banks.name%></option>
+        <%})%>
+        </select><br><br>
+        <input id="distance" name="distance" type="hidden" value="">
+        <button type="submit">Choose</button><br><br><br>
+        </form>
+    
+    <% if(distance && bank && courrier){%>
+        <h3>Distance : <%=Math.round(distance/1000)%> km </h3>
+        <h3>Delivery : <%= Math.round(distance/1000) * courrier%></h3>
+        <h3>Total    : <%= Math.round(distance/1000) * courrier + itemPrice%></h3>
+        <button><a href='checkout/payment?kode=<%=bank%>&total=<%=Math.round(distance/1000) * courrier + itemPrice%>'>Continue to Payment</a></button>
+    <%}%>
+ 
+
+    <script>
+        var mymap = L.map('mapid').setView([-6.260313438238053, 106.78156256675722], 13);
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox.streets',
+        accessToken: 'pk.eyJ1IjoicW95eWltYTIyIiwiYSI6ImNqdHNuZjFkazEycjc0NG1zMmJicTB0ZnoifQ.h8zbWtLR3V8N6-mzHVbRPw'
+        }).addTo(mymap);
+        L.control.scale().addTo(mymap);
+        var marker = L.circle([-6.260313438238053, 106.78156256675722], {
+            color : 'red',
+            draggable : false,
+            radius : 200
+        }).addTo(mymap);
+        marker.bindPopup("<b>Your item will be delivered from here!</b><br> :)").openPopup()
+
+        var marker2 = L.marker([-6.26031343823, 106.77], {
+            draggable : true
+        }).addTo(mymap)
+        marker2.bindPopup("<b>Please choose your delivery address !</b><br> :) :) :)").openPopup()
+
+        // marker.on('move',function(event){
+        //     console.log(event)
+        // })
+        function getPosition(){
+            console.log(marker._latlng)
+            console.log(marker2._latlng)
+            x=L.CRS.Earth.distance(marker._latlng,marker2._latlng)
+            console.log(x)
+            document.getElementById('distance').value = x
+        }
+    </script>
+</body>
+</html>

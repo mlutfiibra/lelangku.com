@@ -36,7 +36,12 @@ build/Release
 node_modules/
 jspm_packages/
 package-lock.json
+<<<<<<< HEAD
 config
+=======
+package.json
+config.json
+>>>>>>> c112eaa24b2cd686dc6d0802b7b4b2f90d7bf721
 
 # TypeScript v1 declaration files
 typings/
