@@ -1,0 +1,66 @@
+<%- include('../partials/head', {title: 'Dashboar Admin'}) %>
+<%- include('../partials/navbar') %>
+
+<div>
+    <% if(success){%>
+    <h4>your data has been <%=success%>ed!</h4>
+    <%}%>
+        <%if(err){%>
+    <h4><%= err %></h4>
+    <% } %>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Dashboard Admin</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h4>
+                User Live Bidding
+            </h4>
+        </div>
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Product Name</td>
+                        <td>Price Start</td>
+                        <td>Bid by </td>
+                        <td>Bid Amount</td>
+                        <td>Got by</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% data.forEach(function(member){ 
+                        let biddingPrice = [] 
+                        let winnerName = ''
+                    %>
+                    <tr>
+                        <td><%= member.name %></td>
+                        <td><%= member.price %></td>
+                        <td>
+                        <% member.Users.forEach((el) => {
+                            biddingPrice.push(el.Bidding.current_price)
+                            winnerName = el.Bidding.winner
+                        %>
+                            <div><%=el.name %></div>
+                        <% })%>
+                        </td>
+                        <td>
+                            <% biddingPrice.forEach((el) => { %>
+                            <div><%=el%></div>
+                            <% }) %>
+                        </td>
+                        <td>
+                            <%=winnerName === null ? 'Still progress' : winnerName %>
+                        </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<%- include('../partials/footer') %></br>

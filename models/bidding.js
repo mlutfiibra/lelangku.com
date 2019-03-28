@@ -8,6 +8,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Bidding.associate = function(models) {
     // associations can be defined here
+    models.User.belongsToMany(models.Item, {through: models.Bidding, foreignKey: 'user_id'})
+    models.Item.belongsToMany(models.User, {through: models.Bidding, foreignKey: 'item_id'})
   };
   return Bidding;
 };
