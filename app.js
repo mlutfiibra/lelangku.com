@@ -11,7 +11,7 @@ const users = require('./routes/users')
 const admin = require('./routes/admin')
 const biddings = require('./routes/biddings')
 
-app.use(express.static('public'))
+app.use('/public',express.static('./public'))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 

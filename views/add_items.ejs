@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Add Items to Sell</title>
+</head>
+<body>
+    <h1>Add Items to Sell</h1><br><br>
+    <div>
+        <%if(err){%>
+        <h4><%= err %></h4>
+        <% } %>
+    </div>
+    <form method="post" enctype="multipart/form-data">
+        <label for name>Item Name :</label><br>
+        <input type="text" id="name" name= "name"><br><br><br>
+        <label for price>Price :</label><br>
+        <input type="text" id="price" name = "price"><br><br><br>
+        <label for location>Item Location :</label><br>
+        <input type="text" id="location" name = "location" ><br><br><br>
+        <input type="file" name="avatar"/>
+        <button type="submit">Add Item</button>
+    </form>
+    
+</body>
+</html> 
