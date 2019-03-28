@@ -1,11 +1,13 @@
 const express = require('express')
 const router = express.Router()
 const Model = require('../models')
+var multer  = require('multer')
+var upload = multer({ dest: './public/upload/' })
 
 
 //CREATE
 router.get('/',(req,res)=>{
-    Model.Item.findAll({order : [['createdAt','ASC']]}).then((data)=>{
+    Model.Item.findAll({order : [['id','ASC']]}).then((data)=>{
         let success = req.query.success
         res.render('list_items',{data:data,success:success,err:null})
     })
@@ -16,10 +18,10 @@ router.get('/add',(req,res)=>{
     res.render('add_items',{err:null})
 })
 
-router.post('/add',(req,res)=>{
+router.post('/add', upload.single('avatar'), (req,res,next)=>{
     let name = req.body.name
     let price = req.body.price
-    let img_path = req.body.img
+    let img_path = req.file.path
     let location = req.body.location
     Model.Item.create({
         name:name,
@@ -28,7 +30,6 @@ router.post('/add',(req,res)=>{
         location:location
     })
     .then(function(){
-        let success = 'add'
         res.redirect('/items/?success=add')
     })
     .catch(function(err){res.render('add_items',{err:err.message})})//perbaiki
@@ -41,15 +42,16 @@ router.get('/edit/:id', (req,res)=>{
     })
 })
 
-router.post('/edit/:id',(req,res)=>{
+router.post('/edit/:id', upload.single('avatar'), (req,res,next)=>{
     let name = req.body.name
     let price = req.body.price
-    let img_path = req.body.img
+    let img_path = req.file.path
     let location = req.body.location
     let id = req.params.id
     Model.Item.findByPk(id).then((data) => {
         data.update({name:name, price:price, img_path:img_path,location:location})
         .then(() => {
+            // res.send(req.file)
             res.redirect('/items/?success=edit')    
         })
         .catch(function(err){res.render('edit_items',{err:err.message})})//perbaiki
