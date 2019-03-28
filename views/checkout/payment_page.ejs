@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+</head>
+<body>
+    <h1>Checkout Page</h1>
+    <img src='<%= bank.img_path %>'>
+    <h3><%= %></h3>
+    <h3>Rp <%= total %>,00</h3>
+    <h3>Payment to <%=bank.name%> Virtual Account</h3>
+    <h3><%=token +" "+ Math.round(Math.random()*1000000000) %></h3>
+    <button><a href='payment/confirmation'>Checkout Now!</a></button>
+</body>
+</html>

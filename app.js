@@ -14,6 +14,7 @@ const biddings = require('./routes/biddings')
 const isAuth = require('./middleware/isAuth')
 const isAdmin = require('./middleware/isAdmin')
 const getSession = require('./helpers/getSession')
+const checkout = require('./routes/checkout')
 const sess = {
     secret: 'isLoggedIn'
 }
@@ -25,6 +26,9 @@ app.use((req,res,next) => {
 })
 
 app.use('/public',express.static('./public'))
+
+app.use('/public/leaflet',express.static("./node_modules/leaflet/dist"))
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -33,6 +37,8 @@ app.set('view engine', 'ejs')
 app.use('/auth', auth)
 app.use('/users', isAuth, upload.single('img_path'), users)
 app.use('/admin', isAdmin, admin)
+app.use('/checkout',checkout)
+app.use('/users', upload.single('img_path'), users)
 app.use('/items', items)
 app.use('/biddings', biddings)
 app.use('/', routes)
