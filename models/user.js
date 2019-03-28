@@ -47,6 +47,7 @@ module.exports = (sequelize, DataTypes) => {
   }
 
   User.prototype.comparePasswordWithSalt = function(password, user) {
+    // console.log(password);
     return bcrypt.compareSync(password, user.password);
   }
 

@@ -10,55 +10,6 @@ routes.get('/', (req, res) => {
     })
 })
 
-routes.get('/signin', (req,res) => {
-    res.render('user/signin')
-})
-
-routes.post('/signin', (req, res) => {
-    ModelUser.findOne({
-            where: {
-                email: req.body.email  
-            }
-        })
-        .then(user => {
-            if(user.comparePasswordWithSalt(req.body.password, user)) {
-                res.redirect('/users/signin')
-            }
-        })
-        .catch(err=> {
-            console.log(err);
-        })
-})
-
-routes.get('/signup', (req, res) => {
-    res.render('user/signup')
-})
-
-routes.post('/signup', (req, res) => {
-    ModelUser.isEmailUnique(req.body.email)
-    .then(found=>{
-        if(found === true) {
-            throw ('Email sudah ada')
-        }else {
-            return ModelUser.create({
-                ...req.body,
-                balance: 0,
-                role: 'buyer',
-                createdAt: new Date,
-                updatedAt: new Date
-            })
-        }
-    })
-    .then(response => {
-        // console.log('sukses ==> ', response);
-        res.redirect('/users/')
-    })
-    .catch(err => {
-        // console.log('errr ==> ', err);
-        res.render('user/signup', {err})
-    })
-})
-
 routes.get('/edit/:id', (req, res) => {
     ModelUser.findByPk(req.params.id)
         .then(user => {
@@ -85,7 +36,7 @@ routes.post('/edit/:id', (req, res) => {
         })
         .then(response => {
             // res.json(response)
-            res.redirect('/users/signup')
+            res.redirect('/')
         })
 })
 

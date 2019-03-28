@@ -1,3 +1,60 @@
+.color-grey3{
+    color: #bdbdbd;
+}
+
+.card-margin {
+    margin: 25px 0px;
+}
+
+.color-grey4{
+    color: #616161;
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+.section-const timer = seconds => {
+    let mmDD = `${Math.floor(seconds/60)}:${seconds % 60}`
+    let format = mmDD.split(":")
+  
+    let int = setInterval(function () {
+      if(format[1]===0) {
+        clearInterval(int);
+      }
+      minutes = format[0]
+      seconds = format[1]
+      
+      if(format[0]<10) {
+        minutes=0+""+format[0]
+      }
+      
+      if(format[1]<10) {
+        seconds=0+""+format[1]
+      }
+      
+      displayCountdown(`${minutes} : ${seconds}`)
+      format[1]--
+      if(format[0]>0 && format[1]===0) {
+        format[0]-=1
+        format[1]=60
+      }
+  }, 1000);
+  };header {
+    color: #616161;
+    font-weight: 500;
+    margin-top: 5px;
+    font-size: 23px;
+}
+
+.mt-5{margin-top: 5px !important;}
+.mt-15 {margin-top: 15px;}
+.mb-20 {margin-bottom: 20px;}
+
+.fs-15{font-size: 15px;}
+
+.color-orange {color: #f47323}
+
 .footer {
     /* position: absolute; */
     right: 0;

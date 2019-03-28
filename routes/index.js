@@ -2,9 +2,11 @@ const routes = require('express').Router()
 const Model = require('../models')
 
 routes.get('/', (req, res) => {
+    console.log(req.session);
+
     Model.Item.findAll({
             order: [
-                ['createdAt', 'ASC']
+                ['createdAt', 'DESC']
             ]
         }).then((data) => {
             let success = req.query.success
