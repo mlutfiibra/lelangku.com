@@ -5,17 +5,15 @@
 </head>
 <body>
     <h1>Edit Items</h1><br><br>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <label for name>Item Name :</label><br>
         <input type="text" id="name" name= "name" value="<%=data.name%>"><br><br><br>
         <label for price>Price :</label><br>
         <input type="text" id="price" name = "price" value="<%=data.price%>"><br><br><br>
-        <label for img>Your items image links :</label><br>
-        <input type="text" id="img" name = "img" value="<%=data.img_path%>"><br><br><br>
         <label for location>Item Location :</label><br>
         <input type="text" id="location" name = "location" value="<%=data.location%>"><br><br><br>
+        <input type="file" name="avatar"/>
         <button type="submit">Edit Item</button>
     </form>
-    
 </body>
 </html> 
