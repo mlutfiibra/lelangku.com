@@ -13,8 +13,8 @@ for (let i = 0; i < 15; i++){
     var obj = 
     {
         name : randomName,
-        username : randomName.toString().slice(0,4).toLowerCase(),
         password : randomName.toString().slice(0,4).toLowerCase(),
+        email : randomEmail,
         img_path  : null,
         location : loc[Math.round(Math.random()*7)],
         address  : randomCard.address.streetC,
@@ -30,8 +30,8 @@ for (let i = 0; i < 15; i++){
 var obj2 = 
     {
         name : 'Admin',
-        username : 'admin',
         password : 'admin',
+        email   : 'admin@lelangku.com',
         img_path  : null,
         location : 'Jakarta',
         address  : "Jalan Anggrek no 12",
