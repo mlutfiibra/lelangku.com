@@ -28,7 +28,10 @@
     <tbody>
         <% data.forEach(function(member){ %>
         <tr>
-            <td><%= member.name %></td>
+            <td>
+                <img src="/<%=member.img_path%>">
+                <%= member.name %>
+            </td>
             <td><%= member.price %></td>
             <td><img src=<%= member.img_path %>></td>
             <td><%= member.location %></td>
