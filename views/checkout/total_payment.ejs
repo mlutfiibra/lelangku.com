@@ -1,51 +1,56 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" href="/public/leaflet/leaflet.css"
-    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-    crossorigin=""/>
-    <script src="/public/leaflet/leaflet.js"
-    integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-    crossorigin=""></script>
-    
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
-</head>
-<body>
-    <h2>Congratulation! You have won the auction!</h2>
-    <h3><%=  %></h3>
-    <img src="">
-    <h3>Please choose your location using the blue pointer in the map</h3>
-    <div id="mapid"></div><br>
-    <button onclick="getPosition()">choose your location</button>
-    <style>
-        #mapid { height: 700px; width: 700px}
-        </style>
-    <form method="POST">
-        <h3>Please choose courriers and payment method</h3>
-        <label>Choose courrier agent:</label>
-        <select id='courrier' name='courrier'>
-            <%courriers.forEach(courriers =>{%>
-                <option value="<%=courriers.price%>"><%=courriers.name%></option>
-            <%})%>
-        </select>
-        <label for bank>Choose bank:</label>
-        <select id='bank' name='bank'>
-        <%banks.forEach(banks =>{%>
-            <option value="<%=banks.token%>"><%=banks.name%></option>
-        <%})%>
-        </select><br><br>
-        <input id="distance" name="distance" type="hidden" value="">
-        <button type="submit">Choose</button><br><br><br>
-        </form>
-    
-    <% if(distance && bank && courrier){%>
-        <h3>Distance : <%=Math.round(distance/1000)%> km </h3>
-        <h3>Delivery : <%= Math.round(distance/1000) * courrier%></h3>
-        <h3>Total    : <%= Math.round(distance/1000) * courrier + itemPrice%></h3>
-        <button><a href='checkout/payment?kode=<%=bank%>&total=<%=Math.round(distance/1000) * courrier + itemPrice%>'>Continue to Payment</a></button>
-    <%}%>
+<%- include('../partials/head', {title: 'Landing Page'}) %>
+<%- include('../partials/navbar') %>
+<div class="container text-center" style="max-width: 640px;">
+    <div class="row text-center mt-15 mb-20">
+        <div class="col-md-12">
+            <h2>Congratulation! You have won the auction!</h2>
+        </div>
+    </div>
+    <div class="row text-center-mt-15">
+        <div class="col-md-12">
+            <div class="mb-15 fs-15 fw-500 color-orange">
+                Please choose your location using the blue pointer in the map
+            </div>
+            <div id="mapid"></div>
+            <button onclick="getPosition()">choose your location</button>
+
+            <form method="POST" class="mt-25">
+                <div class="color-orange fw-500 fs-18">Please choose courriers and payment method</div>
+                <div>
+                    <label for='courrier'>Choose courrier agent:</label>
+                    <select id='courrier' name='courrier'>
+                        <%courriers.forEach(courriers =>{%>
+                            <option value="<%=courriers.price%>"><%=courriers.name%></option>
+                        <%})%>
+                    </select>
+                </div>
+                <div>
+                    <label for="bank">Choose bank:</label>
+                    <select id='bank' name='bank'>
+                    <%banks.forEach(banks =>{%>
+                        <option value="<%=banks.token%>"><%=banks.name%></option>
+                    <%})%>
+                    </select>
+                </div>
+                <input id="distance" name="distance" type="hidden" value="">
+                <button type="submit" class="btn btn-success btn-block mt-15">Submit</button><br><br><br>
+            </form>
+        </div>
+    </div>
+    <div class="mt-15">
+        <% if(distance && bank && courrier){%>
+            <h3>Distance : <%=Math.round(distance/1000)%> km </h3>
+            <h3>Delivery : <%= Math.round(distance/1000) * courrier%></h3>
+            <h3>Total    : <%= Math.round(distance/1000) * courrier + itemPrice%></h3>
+            <a href='checkout/payment?kode=<%=bank%>&total=<%=Math.round(distance/1000) * courrier + itemPrice%>'>
+                <button class="btn btn-primary btn-block">
+                    Continue to Payment
+                </button>
+            </a>
+        <%}%>
+
+    </div>
+</div>
  
 
     <script>
@@ -80,5 +85,4 @@
             document.getElementById('distance').value = x
         }
     </script>
-</body>
-</html>
+<%- include('../partials/footer') %>

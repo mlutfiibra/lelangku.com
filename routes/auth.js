@@ -28,11 +28,11 @@ routes.post('/signin', (req, res) => {
                     res.redirect('/')
                 }else{
                     err = 'Email atau password salah'
-                    res.render('/users/signin', {err})
+                    res.render('users/signin', {err})
                 }
             }else { 
                 let err = 'Email atau password salah'
-                res.render('/users/signin', {err})
+                res.render('user/signin', {err})
             }
         })
         .catch(err=> {
