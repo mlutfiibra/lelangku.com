@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "postgres",
-    "password": "Mantap123",
+    "password": "l",
     "database": "lelangku_db",
     "host": "127.0.0.1",
     "dialect": "postgres"
