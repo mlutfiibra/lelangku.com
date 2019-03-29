@@ -13,7 +13,6 @@ const auth = require('./routes/auth')
 const biddings = require('./routes/biddings')
 const isAuth = require('./middleware/isAuth')
 const isAdmin = require('./middleware/isAdmin')
-const getSession = require('./helpers/getSession')
 const checkout = require('./routes/checkout')
 const sess = {
     secret: 'isLoggedIn'

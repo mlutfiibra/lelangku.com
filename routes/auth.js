@@ -25,6 +25,7 @@ routes.post('/signin', (req, res) => {
                     req.session.isLoggedIn = true
                     req.session.name = user.name
                     req.session.role = user.role
+                    req.session.token = Math.round(Math.random() * 100000)
 
                     res.redirect('/')
                 }else{

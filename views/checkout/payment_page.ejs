@@ -13,7 +13,7 @@
                 <h3><%= %></h3>
                 <h3>Rp <%= total %>,00</h3>
                 <h3>Payment to <%=bank.name%> Virtual Account</h3>
-                <h3><%=token +" "+ Math.round(Math.random()*1000000000) %></h3>
+                <h3><%=token+'08'+ session.token %></h3>
                 <a href='payment/confirmation'>
                     <button class="btn btn-danger">Checkout Now</button>
                 </a>
