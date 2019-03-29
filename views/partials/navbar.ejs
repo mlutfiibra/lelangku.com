@@ -18,21 +18,11 @@
                     <a class="dropdown-item" href="/admin/list-bidding">Bidding</a>
                 </div>
             </li>
-            <% } %>
-            <!-- <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Subject</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/subjects">Data</a>
-                    <a class="dropdown-item" href="/subjects/add">Add</a>
-                </div>
+            <% } else if(session.role==="buyer"){ %>
+            <li class="nav-item">
+                <a class="nav-link" href="/checkout">Cart</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Student</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/students">Data</a>
-                    <a class="dropdown-item" href="/students/add">Add</a>
-                </div>
-            </li> -->
+            <% } %>
         </ul>
         <div style="margin-right: 7em;">    
             <% if(!session.name) { %>
@@ -44,7 +34,7 @@
             </a>
             <% } else {%>
             <span>
-                Selamat datang, <%=session.name %>
+                Welcome, <%=session.name %>
             </span>
             <a href="/auth/logout">
                 <button type="button" class="btn btn-link">Logout</button>

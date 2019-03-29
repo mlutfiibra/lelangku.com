@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser');
-const PORT = 5100
+const PORT = 5300
 const routes = require('./routes')
 const session = require('express-session')
 const multer  = require('multer')
@@ -37,7 +37,7 @@ app.set('view engine', 'ejs')
 app.use('/auth', auth)
 app.use('/users', isAuth, upload.single('img_path'), users)
 app.use('/admin', isAdmin, admin)
-app.use('/checkout',checkout)
+app.use('/checkout', isAuth, checkout)
 app.use('/users', upload.single('img_path'), users)
 app.use('/items', items)
 app.use('/biddings', biddings)
