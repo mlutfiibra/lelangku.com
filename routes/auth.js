@@ -64,7 +64,7 @@ routes.post('/signup', (req, res) => {
     })
     .then(response => {
         // console.log('sukses ==> ', response);
-        res.redirect('/user/')
+        res.redirect('/')
     })
     .catch(err => {
         // console.log('errr ==> ', err);
