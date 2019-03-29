@@ -6,6 +6,9 @@
             <div class="col-md-12">
                 <h1>Sign In</h1>
             </div>
+            <% if(err){ %>
+                <h6>Error : <%=err %></h6>
+            <%}%>
             <div class="col-md-12">
                 <form action="/auth/signin" method="post">
                     <div>
