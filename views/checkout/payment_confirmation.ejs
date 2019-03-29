@@ -1,12 +1,41 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Page Title</title>
-</head>
-<body>
-    <h1>Thank you!</h1><br><br>
-    <h2>Your payment has been confirmed</h2>
-    <h2>Please be patient and wait for your item to come</h2><br>
-    <button><a href='/'>go to landing page</a></button>
-</body>
-</html>
+<%- include('../partials/head', {title: 'Payment Confirmation'}) %>
+<%- include('../partials/navbar') %>
+<div class="container text-center">
+    <div class="form-container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="color-orange">Thank you!</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Your payment has been confirmed</h2>
+                <h2>Please be patient and wait for your item to come</h2>
+            </div>
+        </div>
+
+        <div class="row text-ce">
+            <div 
+                style="margin: 2em auto; display: flex;
+                    justify-content: space-evenly;
+                    width: 25%;
+                    align-content: center;"
+            >
+                <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+                <div style="align-self: center;">
+                    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>  
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <a href='/'>
+                    <button class="btn btn-danger mb-5">Confirm</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../partials/footer') %>

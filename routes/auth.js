@@ -3,7 +3,8 @@ const routes = express.Router();
 const ModelUser = require('../models').User
 
 routes.get('/signin', (req,res) => {
-    res.render('user/signin')
+    let err = req.query.err
+    res.render('user/signin',{err:err})
 })
 
 routes.post('/signin', (req, res) => {
@@ -27,28 +28,30 @@ routes.post('/signin', (req, res) => {
 
                     res.redirect('/')
                 }else{
-                    err = 'Email atau password salah'
-                    res.render('/users/signin', {err})
+                    let err = 'wrong password!'
+                    res.redirect(`/auth/signin?err=${err}`)
                 }
             }else { 
-                let err = 'Email atau password salah'
-                res.render('/users/signin', {err})
+                let err = 'wrong email!'
+                res.redirect(`/auth/signin?err=${err}`)
             }
         })
         .catch(err=> {
-            res.render('/users/signin', {err})
+            res.redirect(`/auth/signin?err=${err}`)
         })
 })
 
 routes.get('/signup', (req, res) => {
-    res.render('user/signup')
+    let err = req.query.err
+    res.render('user/signup',{err:err})
 })
 
 routes.post('/signup', (req, res) => {
     ModelUser.isEmailUnique(req.body.email)
     .then(found=>{
         if(found === true) {
-            throw ('Email sudah ada')
+            let err = 'email already exist!'
+            res.redirect(`/auth/signup?err=${err}`)
         }else {
             return ModelUser.create({
                 ...req.body,
@@ -61,11 +64,12 @@ routes.post('/signup', (req, res) => {
     })
     .then(response => {
         // console.log('sukses ==> ', response);
-        res.redirect('/users/')
+        res.redirect('/')
     })
     .catch(err => {
         // console.log('errr ==> ', err);
-        res.render('user/signup', {err})
+        err = err.message
+        res.redirect(`/auth/signup?err=${err}`)
     })
 })
 

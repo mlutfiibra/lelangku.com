@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "postgres",
-    "password": "Mantap123",
+    "password": "l",
     "database": "lelangku_db",
     "host": "127.0.0.1",
     "dialect": "postgres"
@@ -14,10 +14,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "knnngnxqrreedh",
+    "password": "9e85dad626ac6bdf4722e76ca1e0f9fe4ee1338e51cd185f98bef5a9d7105ed8",
+    "database": "d8vb8pv69umedi",
+    "host": "ec2-174-129-10-235.compute-1.amazonaws.com",
+    "dialect": "postgres"
   }
 }
